@@ -20,6 +20,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-family: Arial, sans-serif;
+  position: relative;
 }
 
 /* Modal Header */
@@ -61,7 +62,7 @@ input[type="date"] {
 }
 
 /* Submit Button Styling */
-button[type="submit"] {
+.submit-button {
   padding: 10px 15px;
   background-color: #007bff;
   color: white;
@@ -73,34 +74,23 @@ button[type="submit"] {
 }
 
 /* Submit Button Hover Effect */
-button[type="submit"]:hover {
+.submit-button:hover {
   background-color: #0056b3;
 }
 
 /* Close Button Styling */
-button[type="button"] {
-  padding: 10px 15px;
-  background-color: #6c757d;
-  color: white;
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 24px;
   cursor: pointer;
-  margin-top: 10px;
-  font-size: 16px;
+  color: #6c757d;
 }
 
 /* Close Button Hover Effect */
-button[type="button"]:hover {
-  background-color: #5a6268;
-}
-
-button[type="close"] {
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-  font-size: 16px;
+.close-icon:hover {
+  color: #5a6268;
 }
