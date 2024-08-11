@@ -2,16 +2,26 @@ import React, { useState } from 'react';
 import './Modal.css';
 
 function Modal({ closeModal }) {
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    phone: '',
+    dob: '',
+  });
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const errors = {};
-    if (!formData.name) errors.name = 'Name is required';
+    if (!formData.username) errors.username = 'Username is required';
     if (!formData.email) errors.email = 'Email is required';
     if (formData.email && !/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
       errors.email = 'Invalid email format';
     }
+    if (!formData.phone) errors.phone = 'Phone number is required';
+    if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
+      errors.phone = 'Invalid phone number format';
+    }
+    if (!formData.dob) errors.dob = 'Date of birth is required';
     return errors;
   };
 
@@ -33,20 +43,20 @@ function Modal({ closeModal }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Enter User Details</h2>
+        <h2>Fill Details</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Name:</label>
+            <label>Username:</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="username"
+              value={formData.username}
               onChange={handleChange}
             />
-            {errors.name && <span className="error">{errors.name}</span>}
+            {errors.username && <span className="error">{errors.username}</span>}
           </div>
           <div>
-            <label>Email:</label>
+            <label>Email Address:</label>
             <input
               type="text"
               name="email"
@@ -54,6 +64,26 @@ function Modal({ closeModal }) {
               onChange={handleChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+          <div>
+            <label>Phone Number:</label>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && <span className="error">{errors.phone}</span>}
+          </div>
+          <div>
+            <label>Date of Birth:</label>
+            <input
+              type="date"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+            />
+            {errors.dob && <span className="error">{errors.dob}</span>}
           </div>
           <button type="submit">Submit</button>
         </form>
