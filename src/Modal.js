@@ -52,6 +52,7 @@ function Modal({ closeModal }) {
               name="username"
               value={formData.username}
               onChange={handleChange}
+              placeholder="Enter Username"
             />
             {errors.username && <span className="error">{errors.username}</span>}
           </div>
@@ -62,6 +63,7 @@ function Modal({ closeModal }) {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="Enter Email Address"
             />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
@@ -72,6 +74,7 @@ function Modal({ closeModal }) {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              placeholder="Enter Phone Number"
             />
             {errors.phone && <span className="error">{errors.phone}</span>}
           </div>
@@ -82,6 +85,7 @@ function Modal({ closeModal }) {
               name="dob"
               value={formData.dob}
               onChange={handleChange}
+              placeholder="dd-mm-yyyy"
             />
             {errors.dob && <span className="error">{errors.dob}</span>}
           </div>
