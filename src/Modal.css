@@ -1,3 +1,4 @@
+/* Modal Overlay */
 .modal {
   position: fixed;
   top: 0;
@@ -10,6 +11,7 @@
   align-items: center;
 }
 
+/* Modal Content Box */
 .modal-content {
   background-color: white;
   padding: 30px;
@@ -17,36 +19,48 @@
   width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
+/* Modal Header */
 h2 {
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
+/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Label Styling */
 label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  text-align: left;
+  font-size: 16px;
 }
 
+/* Input Field Styling */
 input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
+  font-size: 14px;
 }
 
+/* Date Input Styling */
 input[type="date"] {
   padding: 9px; /* Adjust for date picker button */
 }
 
+/* Submit Button Styling */
 button[type="submit"] {
   padding: 10px 15px;
   background-color: #007bff;
@@ -55,12 +69,15 @@ button[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+  font-size: 16px;
 }
 
+/* Submit Button Hover Effect */
 button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+/* Close Button Styling */
 button[type="button"] {
   padding: 10px 15px;
   background-color: #6c757d;
@@ -69,14 +86,21 @@ button[type="button"] {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
+  font-size: 16px;
 }
 
+/* Close Button Hover Effect */
 button[type="button"]:hover {
   background-color: #5a6268;
 }
 
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+button[type="close"] {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
 }

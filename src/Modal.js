@@ -8,31 +8,29 @@ function Modal({ closeModal }) {
     phone: '',
     dob: '',
   });
-  const [errors, setErrors] = useState({});
-
-  const validate = () => {
-    const errors = {};
-    if (!formData.username) errors.username = 'Username is required';
-    if (!formData.email) errors.email = 'Email is required';
-    if (formData.email && !/^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
-      errors.email = 'Invalid email format';
-    }
-    if (!formData.phone) errors.phone = 'Phone number is required';
-    if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
-      errors.phone = 'Invalid phone number format';
-    }
-    if (!formData.dob) errors.dob = 'Date of birth is required';
-    return errors;
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
+    const form = e.target;
+
+    // Phone number validation
+    if (formData.phone && !/^\d{10}$/.test(formData.phone)) {
+      alert('Phone number must be exactly 10 digits.');
+      return;
+    }
+
+    // Date of birth validation
+    if (!formData.dob) {
+      alert('Please enter your date of birth.');
+      return;
+    }
+
+    // Trigger native form validation
+    if (form.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
       console.log('Form submitted:', formData);
       closeModal();
-    } else {
-      setErrors(validationErrors);
     }
   };
 
@@ -43,8 +41,9 @@ function Modal({ closeModal }) {
   return (
     <div className="modal">
       <div className="modal-content">
+        <button className="close-icon" onClick={closeModal}>×</button>
         <h2>Fill Details</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} noValidate>
           <div>
             <label>Username:</label>
             <input
@@ -53,30 +52,31 @@ function Modal({ closeModal }) {
               value={formData.username}
               onChange={handleChange}
               placeholder="Enter Username"
+              required
             />
-            {errors.username && <span className="error">{errors.username}</span>}
           </div>
           <div>
             <label>Email Address:</label>
             <input
-              type="text"
+              type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter Email Address"
+              required
             />
-            {errors.email && <span className="error">{errors.email}</span>}
           </div>
           <div>
             <label>Phone Number:</label>
             <input
-              type="text"
+              type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="Enter Phone Number"
+              pattern="^\d{10}$"
+              required
             />
-            {errors.phone && <span className="error">{errors.phone}</span>}
           </div>
           <div>
             <label>Date of Birth:</label>
@@ -85,13 +85,11 @@ function Modal({ closeModal }) {
               name="dob"
               value={formData.dob}
               onChange={handleChange}
-              placeholder="dd-mm-yyyy"
+              required
             />
-            {errors.dob && <span className="error">{errors.dob}</span>}
           </div>
           <button type="submit">Submit</button>
         </form>
-        <button onClick={closeModal}>Close</button>
       </div>
     </div>
   );
